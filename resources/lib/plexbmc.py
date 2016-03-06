@@ -39,6 +39,7 @@ import xbmc
 import datetime
 from resources.lib.common import *  # Needed first to setup import locations
 from resources.lib.plex import plex
+import plextranslator
 
 
 def select_media_type(part_data, server, dvdplayback=False):
@@ -156,6 +157,7 @@ def add_item_to_gui(url, details, extra_data, context=None, folder=True):
 
     log_print.debug("URL to use for listing: %s" % link_url)
 
+    plextranslator.translate_menu_title(details)
     liz = xbmcgui.ListItem(details.get('title', 'Unknown'), thumbnailImage=extra_data.get('thumb', GENERIC_THUMBNAIL))
 
     log_print.debug("Setting thumbnail as %s" % extra_data.get('thumb', GENERIC_THUMBNAIL))
